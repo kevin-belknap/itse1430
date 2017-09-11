@@ -62,7 +62,7 @@ namespace Nile.Host
                 else if (letter == 'Q')
                     return 'Q';
 
-                //Error
+                //Error  
                 Console.WriteLine("Please choose a valid option");
             };
         }

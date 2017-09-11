@@ -45,22 +45,50 @@ namespace Nile.Host
         static char GetInput()
         {
             while (true)
-            { 
+            {
+                Console.WriteLine("Main Menu");
+                Console.WriteLine("".PadLeft(10), '-');
+
                 Console.WriteLine("A)dd Product");
                 Console.WriteLine("L)List Products");
                 Console.WriteLine("Q)uit");
 
-                string input = Console.ReadLine();
 
+                string input = Console.ReadLine().Trim();
 
-                char letter = Char.ToUpper(input[0]);
+                //Handle scenarios for empty string
+                //Option 1 - ""  (string literal with no characters in it)  runtime error
+                //Might not work in other programs that don't support string types
+                //if (input != "")
 
-                if (letter == 'A')
-                    return 'A';
-                else if (letter == 'L')
-                    return 'L';
-                else if (letter == 'Q')
-                    return 'Q';
+                //Option 2 - string field
+                //if (input != String.Empty)   (will work in all programs)
+
+                //Option 3 - check length
+                //if (input.Length != 0)
+
+                //Anything after a 'dot' on a variable, etc. that has not been assigned a value will return a null.  Null will cause problems, so check for null, too
+                //if (input != null && input.Length != 0)
+                //short circuit evaluation will look at the left side first. If it is false, it does not check the right side.  So the above line will work because it will ignore the right
+                //side if the variable is null
+
+                if (input != null && input.Length != 0)
+                {
+
+                    //String comparison
+                    if (String.Compare(input, "A", true) == 0)
+                        return 'A';
+
+                    //char comparison
+                    char letter = Char.ToUpper(input[0]);
+
+                    if (letter == 'A')
+                        return 'A';
+                    else if (letter == 'L')
+                        return 'L';
+                    else if (letter == 'Q')
+                        return 'Q';
+                }
 
                 //Error  
                 Console.WriteLine("Please choose a valid option");

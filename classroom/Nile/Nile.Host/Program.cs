@@ -16,6 +16,15 @@ namespace Nile.Host
 
             string input = Console.ReadLine();
 
+            if(input == "A")
+            {
+
+            }
+            else
+            {
+
+            }
+
         }
 
         static void Main2( string[] args)

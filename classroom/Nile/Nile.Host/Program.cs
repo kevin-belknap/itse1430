@@ -16,13 +16,21 @@ namespace Nile.Host
 
             string input = Console.ReadLine();
 
-            if(input == "A")
+            if (input == "A")
+            {
+                //do something
+            }
+            else if (input == "L")
+            {
+
+            }
+            else if (input == "Q")
             {
 
             }
             else
             {
-
+                //error
             }
 
         }

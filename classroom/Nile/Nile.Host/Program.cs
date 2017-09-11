@@ -10,7 +10,18 @@ namespace Nile.Host
     {
         static void Main( string[] args )
         {
-            Console.WriteLine("A)ddProduct");
+            Console.WriteLine("A)dd Product");
+            Console.WriteLine("L)List Products");
+            Console.WriteLine("Q)uit");
+
+            string input = Console.ReadLine();
+
         }
+
+        static void Main2( string[] args)
+        {
+
+        }
+
     }
 }

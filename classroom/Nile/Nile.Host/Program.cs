@@ -8,6 +8,7 @@ namespace Nile.Host
 {
     class Program
     {
+
         static void Main( string[] args )
         {
             bool quit = false;
@@ -39,7 +40,19 @@ namespace Nile.Host
 
         private static void AddProduct()
         {
-            throw new NotImplementedException();
+            Console.Write("Enter product name: ");  //Write will have the cursor at the end of the line so the user knows they are putting in a product name
+            productName = Console.ReadLine().Trim();
+
+            //Ensure not empty
+            //TODO
+            //Do this for homework
+
+            Console.Write("Enter price (> 0): ");
+            string productPrice = Console.ReadLine();
+
+            Console.Write("Is it discontinued (Y/N): ");
+            string productDiscounted = Console.ReadLine().Trim();
+
         }
 
         static char GetInput()
@@ -99,6 +112,13 @@ namespace Nile.Host
         {
 
         }
+
+        //only put attributes for products outside of functions
+        //Product 
+        static string productName;
+        static decimal productPrice;
+        static string productDescription;
+        static bool productDiscontinued;
 
     }
 }

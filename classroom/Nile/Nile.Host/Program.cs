@@ -69,7 +69,7 @@ namespace Nile.Host
 
 
             Console.Write("Is it discontinued (Y/N): ");
-            string productDiscounted = Console.ReadLine().Trim();   //reads user input until Enter key pressed
+            productDiscontinued = ReadYesNo();   //reads user input until Enter key pressed
 
         }
 
@@ -140,9 +140,15 @@ namespace Nile.Host
             {
                 string input = Console.ReadLine();
 
-                decimal result;
-                if (Decimal.TryParse(input, out result))   //out parameters must be a variable
+
+                //decimal result;
+                //if (Decimal.TryParse(input, out result))   //out parameters must be a variable
+                //    return result;
+
+                //Inline Variable Declaration as opposed to separate variable declaration like above code
+                if (Decimal.TryParse(input, out decimal result))   //out parameters must be a variable
                     return result;
+
 
                 Console.WriteLine("Enter a valid decimal");
 
@@ -156,8 +162,7 @@ namespace Nile.Host
             do
             {
                 string input = Console.ReadLine();
-
-                bool result;
+                
                 if (!String.IsNullOrEmpty(input))
                 {
                     switch (Char.ToUpper(input[0]))

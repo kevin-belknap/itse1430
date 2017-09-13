@@ -136,9 +136,40 @@ namespace Nile.Host
         /// <returns>The decimal value</returns>
         static decimal ReadDecimal()
         {
-            string input = Console.ReadLine();
+            do
+            {
+                string input = Console.ReadLine();
 
-            return Decimal.Parse(input);
+                decimal result;
+                if (Decimal.TryParse(input, out result))   //out parameters must be a variable
+                    return result;
+
+                Console.WriteLine("Enter a valid decimal");
+
+            } while (true);
+        }
+
+        /// <summary>Reads a boolean from Console</summary>
+        /// <returns>The boolean value</returns>
+        static bool ReadYesNo()
+        {
+            do
+            {
+                string input = Console.ReadLine();
+
+                bool result;
+                if (!String.IsNullOrEmpty(input))
+                {
+                    switch (Char.ToUpper(input[0]))
+                    {
+                        case 'Y': return true;
+                        case 'N': return false;
+                    }
+                }
+                    
+                Console.WriteLine("Enter either Y or N");
+
+            } while (true);
         }
 
         //only put attributes for products outside of functions

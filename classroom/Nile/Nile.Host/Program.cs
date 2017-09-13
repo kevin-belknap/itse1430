@@ -35,7 +35,21 @@ namespace Nile.Host
 
         private static void ListProducts()
         {
-            throw new NotImplementedException();
+            //Name $price (Discontinued)
+            //Description
+
+            //String.Format
+            //string msg = String.Format("{0}\t\t\t{1}\t\t{2}", productName, productPrice, productDiscontinued ? "[Discontinued]" : "");
+
+            //String.Interpolation
+            string msg = $"{productName}\t\t\t${productPrice}\t\t{(productDiscontinued ? "[Discontinued]" : "")}";
+
+
+            Console.WriteLine(msg);
+            Console.WriteLine(productDescription);
+            
+
+
         }
 
         private static void AddProduct()
@@ -48,10 +62,14 @@ namespace Nile.Host
             //Do this for homework
 
             Console.Write("Enter price (> 0): ");
-            string productPrice = Console.ReadLine();
+            productPrice = ReadDecimal();
+
+            Console.Write("Enter optional description:");
+            productDescription = Console.ReadLine();
+
 
             Console.Write("Is it discontinued (Y/N): ");
-            string productDiscounted = Console.ReadLine().Trim();
+            string productDiscounted = Console.ReadLine().Trim();   //reads user input until Enter key pressed
 
         }
 
@@ -59,7 +77,8 @@ namespace Nile.Host
         {
             while (true)
             {
-                Console.WriteLine("Main Menu");
+                Console.WriteLine();
+                Console.WriteLine("Main Menu");            //WriteLine puts the message out and puts cursor on next line
                 Console.WriteLine("".PadLeft(10), '-');
 
                 Console.WriteLine("A)dd Product");
@@ -111,6 +130,15 @@ namespace Nile.Host
         static void Main2( string[] args)
         {
 
+        }
+
+        /// <summary>Reads a decimal from Console</summary>
+        /// <returns>The decimal value</returns>
+        static decimal ReadDecimal()
+        {
+            string input = Console.ReadLine();
+
+            return Decimal.Parse(input);
         }
 
         //only put attributes for products outside of functions

@@ -155,6 +155,34 @@ namespace Nile.Host
             } while (true);
         }
 
+        static string ReadString( string errorMessage, bool allowEmpty )   //this is just for classroom discussion
+        {
+            //if (errorMessage == null)
+            //    errorMessage = "Enter a valid string";
+            //else
+                //errorMessage = errorMessage.Trim();
+
+            //null coalesce - eliminates the need for an if statement like above
+            errorMessage = errorMessage ?? "Enter a valid string";
+
+            //null conditional
+            errorMessage = errorMessage?.Trim();
+
+
+
+            do
+            {
+                var input = Console.ReadLine();
+                if (String.IsNullOrEmpty(input) && allowEmpty)
+                    return "";
+                else if (!String.IsNullOrEmpty(input))
+                    return input;
+            
+                Console.WriteLine(errorMessage);
+
+            } while (true);
+        }
+
         /// <summary>Reads a boolean from Console</summary>
         /// <returns>The boolean value</returns>
         static bool ReadYesNo()

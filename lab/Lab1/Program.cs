@@ -1,7 +1,7 @@
 ﻿/*
  * ITSE-1430
  * Kevin Belknap
- * 9.2.2017
+ * 9.16.2017
  */
 
 using System;
@@ -10,188 +10,167 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab1
+namespace Nile.Host
 {
     class Program
     {
-        static bool showAgain;
-        static Movies movie;
-
         static void Main(string[] args)
         {
-            showAgain = true;
+            bool quit = false;
+
+            do
+            {
+                char userSelection = GetUserInput();
+
+                switch (userSelection)
+                {
+                    case 'L': ListMovie(); break;
+                    case 'A': AddMovie(); break;
+                    case 'R': RemoveMovie(); break;
+                    case 'Q': quit = true; break;
+                }
+            }
+            while (!quit);
+        }
+        
+        static char GetUserInput()
+        {
+            while (true)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Main Menu");
+                Console.WriteLine("---------");
+                Console.WriteLine("L)ist Movies");
+                Console.WriteLine("A)dd Movies");
+                Console.WriteLine("R)emove Movie");
+                Console.WriteLine("Q)uit");
+
+                string input = Console.ReadLine().Trim();
+
+                if (input != null && input.Length != 0)
+                {
+                    char letter = Char.ToUpper(input[0]);
+
+                    if (letter == 'L')
+                        return 'L';
+                    else if (letter == 'A')
+                        return 'A';
+                    else if (letter == 'R')
+                        return 'R';
+                    else if (letter == 'Q')
+                        return 'Q';
+                }
+
+                Console.WriteLine("Please choose a valid option");
+            }
+        }
+
+       private static void ListMovie()
+       {
+            string message = "";
+
+            if (String.IsNullOrEmpty(movieDescription))
+                movieDescription = "[No Description Given]";
+
+           if (String.IsNullOrEmpty(movieTitle))
+           {
+                message = "No movies available";
+           }
+           else
+           {
+                message = $"{movieTitle}\n{movieDescription}\nRun Length - {movieLength} mins\nStatus = {(movieOwned ? "Owned" : "Not Owned")}";
+            }
+
+            Console.WriteLine(message);
+       }
+
+        private static void AddMovie()
+        {
+            bool movieEntered = false;
             
-            while (showAgain == true)
+            while (!movieEntered)
             {
-                DisplayMenu();
-                GetUserInput();
-            }
-        }
-
-        static void DisplayMenu()
-        {
-            string[] movieList = { "1. List Movies", "2. Add Movies", "3. Remove Movie", "4. Quit" };
-
-            for (int i = 0; i < movieList.Count(); i++)
-            {
-                Console.WriteLine(movieList[i]);
-            }
-        }
-
-        static void GetUserInput()
-        {
-            string userSelection = Console.ReadLine();
-
-            switch (userSelection)
-            {
-                case "1":
-                    ListMovie();
-                    break;
-                case "2":
-                    AddMovie();
-                    break;
-                case "3":
-                    RemoveMovie();
-                    break;
-                case "4":
-                    showAgain = false;
-                    break;
-                default:
-                    Console.WriteLine("Please enter a valid input\n\n");
-                    break;
-            }
-        }
-
-        static void ListMovie()
-        {
-            string ownedLabel;
-
-            Console.Write("\n");
-
-            if (movie != null)
-            {
-                if (movie.Owned)
-                {
-                    ownedLabel = "Owned\n";
-                }
-                else
-                {
-                    ownedLabel = "Not Owned\n";
-                }
-
-                Console.Write(movie.Title + "\n");
-                if (movie.Description.Trim().Length > 0)
-                {
-                    Console.Write(movie.Description + "\n");
-                }
-                else
-                {
-                    Console.Write("N/A\n");
-                }
-                Console.Write("Run length - " + movie.Length + " mins\n");
-                Console.Write("Status = " + ownedLabel + "\n\n");
-            }
-            else
-            {
-                Console.Write("No movies available\n\n");
-            }
-        }
-
-        static void AddMovie()
-        {
-            string movieTitle = "";
-            string movieDescription = "";
-            int movieLength = -1;
-            Nullable<bool> movieOwned = null;
-            string userOwns = "";
-
-            string movieLengthResponse = "";
-
-            while (movieTitle.Trim().Length == 0)
-            {
-                Console.Write("Enter a Title\n");
+                Console.Write("Enter a Title: ");
                 movieTitle = Console.ReadLine();
-
                 if (movieTitle.Trim().Length == 0)
                 {
-                    Console.Write("You must enter a value\n");
-                }
-            }
-
-            Console.Write("Enter an optional description\n");
-            movieDescription = Console.ReadLine();
-
-            while (movieLength < 0)
-            {
-                Console.Write("\nEnter the optional length (in minutes)\n");
-                try
-                {
-                    movieLengthResponse = Console.ReadLine();
-
-                    movieLength = int.Parse(movieLengthResponse);
-
-                    if (movieLength < 0)
-                    {
-                        Console.Write("You must enter a value >= 0\n");
-                    }
-                }
-                catch
-                {
-                    if (movieLengthResponse == "")
-                    {
-                        movieLength = 0;
-                    }
-                    else
-                    {
-                        Console.Write("You must enter a value >= 0\n");
-                    }
-                }
-            }
-
-            while (!movieOwned.HasValue)
-            {
-                Console.Write("Do you own this movie? (Y/N)\n");
-                userOwns = Console.ReadLine();
-
-                if (userOwns.ToUpper() == "Y")
-                {
-                    movieOwned = true;
-                }
-                else if (userOwns.ToUpper() == "N")
-                {
-                    movieOwned = false;
+                    Console.WriteLine("You must enter a value");
                 }
                 else
                 {
-                    Console.Write("Please enter Y or N\n");
+                    movieEntered = true;
                 }
             }
 
-            movie = new Movies(
-               movieTitle,
-               movieDescription,
-               movieLength,
-               movieOwned.Value
-            );
+            Console.Write("Enter an optional description: ");
+            movieDescription = Console.ReadLine();
+
+            Console.Write("Enter the optional length (in minutes): ");
+            movieLength = ReadInt();
+
+            Console.Write("Do you own this movie? (Y/N): ");
+            movieOwned = ReadYesNo();
         }
 
         static void RemoveMovie()
         {
             Console.Write("Are you sure you want to remove the movie?(Y/N)\n");
-            string removeResponse = Console.ReadLine();
+            bool removeResponse = ReadYesNo();
 
-            while (removeResponse.ToUpper() != "Y" && removeResponse.ToUpper() != "N")
+            if (removeResponse)
             {
-                Console.Write("\nPlease enter Y or N\n\n");
-                removeResponse = Console.ReadLine();
-            }
-
-            if (removeResponse.ToUpper() == "Y")
-            {
-                movie = null;
+                movieTitle = "";
+                movieDescription = "";
+                movieLength = 0;
+                movieOwned = false;
             }
 
             Console.Write("\n");
         }
+
+        /// <summary>Reads a decimal from Console</summary>
+        /// <returns>The decimal value</returns>
+        static int ReadInt()
+        {
+            do
+            {
+                string input = Console.ReadLine();
+
+                if (input.Trim().Length == 0)
+                    return 0;
+                else if (int.TryParse(input, out int result) && int.Parse(input) > -1)
+                    return result;
+                
+                Console.WriteLine("You must enter a value >= 0");
+
+            } while (true);
+        }
+        
+        /// <summary>Reads a boolean from Console</summary>
+        /// <returns>The boolean value</returns>
+        static bool ReadYesNo()
+        {
+            do
+            {
+                string input = Console.ReadLine();
+
+                if (!String.IsNullOrEmpty(input))
+                {
+                    switch (Char.ToUpper(input[0]))
+                    {
+                        case 'Y': return true;
+                        case 'N': return false;
+                    }
+                }
+
+                Console.WriteLine("Enter either Y or N");
+
+            } while (true);
+        }
+        
+        static string movieTitle;
+        static string movieDescription;
+        static int movieLength;
+        static bool movieOwned;
     }
 }

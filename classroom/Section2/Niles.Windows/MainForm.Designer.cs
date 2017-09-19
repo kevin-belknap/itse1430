@@ -1,4 +1,4 @@
-﻿namespace Niles.Windows {
+﻿namespace Nile.Windows {
     partial class MainForm {
         /// <summary>
         /// Required designer variable.

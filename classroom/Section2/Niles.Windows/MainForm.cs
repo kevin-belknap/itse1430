@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Niles.Windows {
+namespace Nile.Windows {
     public partial class MainForm : Form {
         public MainForm()
         {

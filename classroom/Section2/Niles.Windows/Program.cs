@@ -14,6 +14,13 @@ namespace Nile.Windows {
         static void Main()
         {
             var product = new Product();
+            //product.Name = "Product A";
+
+            //var price = product.GetDiscountedPrice();
+            var name = product.Name.Trim();
+
+            //in line 18, product is the Instance. The dot is the modifier?
+
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

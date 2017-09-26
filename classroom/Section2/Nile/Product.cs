@@ -12,7 +12,8 @@ namespace Nile {
     public class Product {
 
 
-        public readonly Product None = new Product();
+        //public readonly Product None = new Product();
+        //public Product None = new Product();
 
 
         //Each instance will have its own copy of these fields.  Field = data

@@ -10,9 +10,48 @@ using System.Windows.Forms;
 
 namespace Nile.Windows {
     public partial class ProductDetailForm : Form {
-        public ProductDetailForm()
+
+        #region Construction
+
+        public ProductDetailForm() //: base()
         {
+            //Don't ever put anything in front of the InitializeComponent
             InitializeComponent();
+        }
+
+        public ProductDetailForm( string title )
+        {
+            //Don't ever put anything in front of the InitializeComponent
+            InitializeComponent();
+
+            Text = title;
+        }
+
+        public ProductDetailForm( string title, Product product )
+        {
+            //Don't ever put anything in front of the InitializeComponent
+            InitializeComponent();
+
+            Text = title;
+            Product = product;
+        }
+        #endregion
+
+        //last point before showing the UI.  
+        //Logic to set up the initial view of the form.  
+        //The Base class knows how to call the OnLoad function.
+        protected override void OnLoad( EventArgs e )
+        {
+            //call base.OnLoad to get standard implementation.  There are times that the base type will not be included if you don't call it explicitly.
+            base.OnLoad(e);
+        
+            if (Product != null)
+            {
+                _txtName.Text = Product.Name;
+                _txtDescription.Text = Product.Description;
+                _txtPrice.Text = Product.Price.ToString();
+                _chkIsDiscontinued.Checked = Product.IsDiscontinued;
+            }
         }
 
         private void ProductDetailForm_Load( object sender, EventArgs e )
@@ -30,6 +69,10 @@ namespace Nile.Windows {
         }
 
        
+        private void showError (string message, string title)
+        {
+            MessageBox.Show(this, message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         private void OnSave( object sender, EventArgs e )
         {
@@ -39,7 +82,11 @@ namespace Nile.Windows {
             product.Price = GetPrice();
             product.IsDiscontinued = _chkIsDiscontinued.Checked;
 
-            //TODO: Add validation
+            var error = product.Validate();
+            if (!String.IsNullOrEmpty(error))
+            {
+                showError(error, "Validation Error");
+            }
 
             Product = product;
             this.DialogResult = DialogResult.OK;

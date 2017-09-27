@@ -88,13 +88,36 @@ namespace Nile {
             }
         }
 
+        public override string ToString()
+        {
+            return base.ToString();
+            {
+                return Name;
+            }
+        }
+
+        public virtual string Validate()
+        {
+            //TODO: validate
+
+            if (String.IsNullOrEmpty(Name))
+                return "Name cannot be empty";
+
+                //Pri9ce > 0
+                if (Price < 0)
+                    return "Price must be >= 0";
+
+                return null;
+            }
+        
+
         //property that allows anyone to get value, but i am only one that can set it.
         //you can mix accessibility.  You can have an access modifier on a get or a set.  It may be on one, but not both.
         //you always have to be same or more restrictive than property access modifier
-        public int ICanOnlySetIt { get; private set; }
+        //public int ICanOnlySetIt { get; private set; }
 
 
-        public int ICanOnlySetIt2 { get; }
+        //public int ICanOnlySetIt2 { get; }
 
         //The two properties above are identical because the second will automatically set the set backing field to private.
 

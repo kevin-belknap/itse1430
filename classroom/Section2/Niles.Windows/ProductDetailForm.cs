@@ -19,20 +19,14 @@ namespace Nile.Windows {
             InitializeComponent();
         }
 
-        public ProductDetailForm( string title )
+        //call base constructor of this type
+        public ProductDetailForm( string title ) : this()    //constructor chaining
         {
-            //Don't ever put anything in front of the InitializeComponent
-            InitializeComponent();
-
             Text = title;
         }
 
-        public ProductDetailForm( string title, Product product )
+        public ProductDetailForm( string title, Product product ) : this(title)  //constructor chaining.  calls the constructor that takes title as the parameter, which then calls the base constructor of the class.
         {
-            //Don't ever put anything in front of the InitializeComponent
-            InitializeComponent();
-
-            Text = title;
             Product = product;
         }
         #endregion

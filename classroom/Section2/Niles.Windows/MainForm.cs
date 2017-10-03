@@ -54,5 +54,11 @@ namespace Nile.Windows {
         }
 
         private Product _product;
+
+        private void OnHelpAbout( object sender, EventArgs e )
+        {
+            var about = new AboutBox();
+            about.ShowDialog(this);
+        }
     }
 }

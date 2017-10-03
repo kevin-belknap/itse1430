@@ -32,8 +32,10 @@
             this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._miProductAdd = new System.Windows.Forms.ToolStripMenuItem();
             this._miProductEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this._miProductDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this._miProductDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this._miHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +43,8 @@
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.productToolStripMenuItem});
+            this.productToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
             this.mainMenu.Size = new System.Drawing.Size(1089, 24);
@@ -60,7 +63,7 @@
             // 
             this._miFileExit.Name = "_miFileExit";
             this._miFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this._miFileExit.Size = new System.Drawing.Size(152, 22);
+            this._miFileExit.Size = new System.Drawing.Size(134, 22);
             this._miFileExit.Text = "E&xit";
             this._miFileExit.Click += new System.EventHandler(this.OnFileExit);
             // 
@@ -89,6 +92,11 @@
             this._miProductEdit.Text = "&Edit";
             this._miProductEdit.Click += new System.EventHandler(this.OnProductEdit);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
             // _miProductDelete
             // 
             this._miProductDelete.Name = "_miProductDelete";
@@ -97,10 +105,20 @@
             this._miProductDelete.Text = "&Delete";
             this._miProductDelete.Click += new System.EventHandler(this.OnProductDelete);
             // 
-            // toolStripSeparator1
+            // helpToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._miHelpAbout});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // _miHelpAbout
+            // 
+            this._miHelpAbout.Name = "_miHelpAbout";
+            this._miHelpAbout.Size = new System.Drawing.Size(152, 22);
+            this._miHelpAbout.Text = "&About ";
+            this._miHelpAbout.Click += new System.EventHandler(this.OnHelpAbout);
             // 
             // MainForm
             // 
@@ -129,6 +147,8 @@
         private System.Windows.Forms.ToolStripMenuItem _miProductEdit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem _miProductDelete;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem _miHelpAbout;
     }
 }
 

@@ -96,5 +96,39 @@ namespace Nile.Windows {
             //TODO: Validate price
             return 0;
         }
+
+        private void ProductDetailForm_FormClosing( object sender, FormClosingEventArgs e )
+        {
+            //This is a runtime check. Do not do this! Need to be more safe.
+            //var form = (Form)sender;//
+
+            //do this instead.
+            var form = sender as Form;
+            //the AS operator is a runtime Safe type cast.  It must be a referenced type. You cannot use value types.  It attempts
+            //to convert the expression to the type. If successful, you get that type bacck. If not successful, you get null of that
+            //type back/  So now you can check for null.
+
+            //for value types, you can use the IS keyword
+            //if (sender is int)
+            //{ 
+            //    var intValue = (int)sender;
+            //};
+
+
+            //Pattern matching
+            if (sender is int intValue)  //intValue is not a variable
+            {
+
+            };
+
+
+            if (MessageBox.Show(this, "Are you sure?", "Closing", MessageBoxButtons.YesNo) == DialogResult.No)
+                e.Cancel = true;
+        }
+
+        private void ProductDetailForm_FormClosed( object sender, FormClosedEventArgs e )
+        {
+
+        }
     }
 }

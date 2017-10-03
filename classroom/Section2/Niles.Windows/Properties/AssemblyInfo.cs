@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Nile.Windows")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Amazing Windows App")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Nile.Windows")]
+[assembly: AssemblyCompany("TCCD")]
+[assembly: AssemblyProduct("Nile")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -46,6 +46,8 @@ namespace Nile.Windows {
                 _txtPrice.Text = Product.Price.ToString();
                 _chkIsDiscontinued.Checked = Product.IsDiscontinued;
             }
+
+            ValidateChildren();
         }
 
         private void ProductDetailForm_Load( object sender, EventArgs e )
@@ -70,16 +72,22 @@ namespace Nile.Windows {
 
         private void OnSave( object sender, EventArgs e )
         {
+            if  (!ValidateChildren())
+            {
+                return; 
+            }
+
             var product = new Product();
             product.Name = _txtName.Text;
             product.Description = _txtDescription.Text;
-            product.Price = GetPrice();
+            product.Price = GetPrice(_txtPrice);
             product.IsDiscontinued = _chkIsDiscontinued.Checked;
 
             var error = product.Validate();
             if (!String.IsNullOrEmpty(error))
             {
                 showError(error, "Validation Error");
+                return;
             }
 
             Product = product;
@@ -87,48 +95,43 @@ namespace Nile.Windows {
             Close();
         }
 
-        private decimal GetPrice()
+        private decimal GetPrice(TextBox control)
         {
-            if (Decimal.TryParse(_txtPrice.Text, out decimal price))
+            if (Decimal.TryParse(control.Text, out decimal price))
                 return price;
 
-            this.DialogResult = DialogResult.Cancel;
+            //this.DialogResult = DialogResult.Cancel;
             //TODO: Validate price
-            return 0;
+            return -1;   //indicate error
         }
 
         private void ProductDetailForm_FormClosing( object sender, FormClosingEventArgs e )
         {
-            //This is a runtime check. Do not do this! Need to be more safe.
-            //var form = (Form)sender;//
 
-            //do this instead.
-            var form = sender as Form;
-            //the AS operator is a runtime Safe type cast.  It must be a referenced type. You cannot use value types.  It attempts
-            //to convert the expression to the type. If successful, you get that type bacck. If not successful, you get null of that
-            //type back/  So now you can check for null.
-
-            //for value types, you can use the IS keyword
-            //if (sender is int)
-            //{ 
-            //    var intValue = (int)sender;
-            //};
-
-
-            //Pattern matching
-            if (sender is int intValue)  //intValue is not a variable
-            {
-
-            };
-
-
-            if (MessageBox.Show(this, "Are you sure?", "Closing", MessageBoxButtons.YesNo) == DialogResult.No)
-                e.Cancel = true;
         }
 
-        private void ProductDetailForm_FormClosed( object sender, FormClosedEventArgs e )
+        private void OnValidatingPrice( object sender, CancelEventArgs e )
         {
+            var tb = sender as TextBox;
 
+            if (GetPrice(tb) < 0)
+            {
+                e.Cancel = true;
+                _errors.SetError(_txtPrice, "Value must be much bigger than just a zero");
+            }
+            else
+            {
+                _errors.SetError(_txtPrice, "");
+            }
+        }
+
+        private void OnValidatingName( object sender, CancelEventArgs e )
+        {
+            var tb = sender as TextBox;
+            if (String.IsNullOrEmpty(tb.Text))
+                _errors.SetError(tb, "Name is required");
+            else
+                _errors.SetError(tb, "");
         }
     }
 }

@@ -116,7 +116,7 @@
             // _miHelpAbout
             // 
             this._miHelpAbout.Name = "_miHelpAbout";
-            this._miHelpAbout.Size = new System.Drawing.Size(152, 22);
+            this._miHelpAbout.Size = new System.Drawing.Size(110, 22);
             this._miHelpAbout.Text = "&About ";
             this._miHelpAbout.Click += new System.EventHandler(this.OnHelpAbout);
             // 

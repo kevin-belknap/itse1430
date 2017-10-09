@@ -126,6 +126,7 @@ namespace Nile {
         //these are referred to as backing fields.
         private string _name;
         private string _description;
+    
 
         //readonly applied to a field effectively makes this a CONST... with differences.  Readonly means the value is fixed the moment the instance of the class is created.  
         //it is not restricted to value types

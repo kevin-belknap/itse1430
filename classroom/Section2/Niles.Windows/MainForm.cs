@@ -48,17 +48,16 @@ namespace Nile.Windows {
             //Confirm
             if (MessageBox.Show(this, $"Are you sure you want to delete '{ _product.Name}'?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
-
-            //TODO: Delete product
+            
             _product = null;
         }
-
-        private Product _product;
-
+        
         private void OnHelpAbout( object sender, EventArgs e )
         {
             var about = new AboutBox();
             about.ShowDialog(this);
         }
+
+        private Product _product;
     }
 }

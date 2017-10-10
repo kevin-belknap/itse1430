@@ -26,6 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._txtTitle = new System.Windows.Forms.TextBox();
             this._txtDescription = new System.Windows.Forms.TextBox();
             this._txtLength = new System.Windows.Forms.TextBox();
@@ -36,6 +37,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this._btnCancel = new System.Windows.Forms.Button();
             this._btnSave = new System.Windows.Forms.Button();
+            this._errors = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).BeginInit();
             this.SuspendLayout();
             // 
             // _txtTitle
@@ -44,6 +47,7 @@
             this._txtTitle.Name = "_txtTitle";
             this._txtTitle.Size = new System.Drawing.Size(355, 20);
             this._txtTitle.TabIndex = 0;
+            this._txtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingTitle);
             // 
             // _txtDescription
             // 
@@ -59,6 +63,7 @@
             this._txtLength.Name = "_txtLength";
             this._txtLength.Size = new System.Drawing.Size(60, 20);
             this._txtLength.TabIndex = 2;
+            this._txtLength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingLength);
             // 
             // _chkOwned
             // 
@@ -126,6 +131,11 @@
             this._btnSave.UseVisualStyleBackColor = true;
             this._btnSave.Click += new System.EventHandler(this.OnSave);
             // 
+            // _errors
+            // 
+            this._errors.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this._errors.ContainerControl = this;
+            // 
             // MovieDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,6 +153,7 @@
             this.Controls.Add(this._txtTitle);
             this.Name = "MovieDetailForm";
             this.Text = "Movie Details";
+            ((System.ComponentModel.ISupportInitialize)(this._errors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +171,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button _btnCancel;
         private System.Windows.Forms.Button _btnSave;
+        private System.Windows.Forms.ErrorProvider _errors;
     }
 }

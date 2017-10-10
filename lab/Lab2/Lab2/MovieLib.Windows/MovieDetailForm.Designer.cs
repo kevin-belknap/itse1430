@@ -59,6 +59,7 @@
             this._txtLength.Name = "_txtLength";
             this._txtLength.Size = new System.Drawing.Size(60, 20);
             this._txtLength.TabIndex = 2;
+            this._txtLength.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingLength);
             // 
             // _chkOwned
             // 

@@ -102,5 +102,19 @@ namespace MovieLib.Windows {
 
             return -1;   //indicate error
         }
+        //TODO: Error check for movie length
+        //private void OnValidatingLength( object sender, CancelEventArgs e )
+        //{
+        //    var tb = sender as TextBox;
+
+        //    if (GetLength(tb) < 0)
+        //    {
+        //        e.Cancel = true;
+        //        _errors.SetError(_txtPrice, "Value must be much bigger than just a zero");
+        //    } else
+        //    {
+        //        _errors.SetError(_txtPrice, "");
+        //    }
+        //}
     }
 }

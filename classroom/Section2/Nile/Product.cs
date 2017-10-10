@@ -96,6 +96,20 @@ namespace Nile {
             }
         }
 
+        //size of the product
+        public int[] Sizes
+        {
+            get {
+                var copySizes = new int[_sizes.Length];
+                Array.Copy(_sizes, copySizes, _sizes.Length);
+
+                return copySizes;
+            }
+        }
+
+
+        private int[] _sizes = new int[4];
+
         public virtual string Validate()
         {
             //TODO: validate

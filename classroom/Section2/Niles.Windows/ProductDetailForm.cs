@@ -78,6 +78,7 @@ namespace Nile.Windows {
             }
 
             var product = new Product();
+            product.Id = Product?.Id ?? 0;
             product.Name = _txtName.Text;
             product.Description = _txtDescription.Text;
             product.Price = GetPrice(_txtPrice);

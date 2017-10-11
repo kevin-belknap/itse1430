@@ -36,6 +36,7 @@
             this._miProductDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._miHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this._listProducts = new System.Windows.Forms.ListBox();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,27 +82,27 @@
             // _miProductAdd
             // 
             this._miProductAdd.Name = "_miProductAdd";
-            this._miProductAdd.Size = new System.Drawing.Size(152, 22);
+            this._miProductAdd.Size = new System.Drawing.Size(131, 22);
             this._miProductAdd.Text = "&Add";
             this._miProductAdd.Click += new System.EventHandler(this.OnProductAdd);
             // 
             // _miProductEdit
             // 
             this._miProductEdit.Name = "_miProductEdit";
-            this._miProductEdit.Size = new System.Drawing.Size(152, 22);
+            this._miProductEdit.Size = new System.Drawing.Size(131, 22);
             this._miProductEdit.Text = "&Edit";
             this._miProductEdit.Click += new System.EventHandler(this.OnProductEdit);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(128, 6);
             // 
             // _miProductDelete
             // 
             this._miProductDelete.Name = "_miProductDelete";
             this._miProductDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this._miProductDelete.Size = new System.Drawing.Size(152, 22);
+            this._miProductDelete.Size = new System.Drawing.Size(131, 22);
             this._miProductDelete.Text = "&Delete";
             this._miProductDelete.Click += new System.EventHandler(this.OnProductDelete);
             // 
@@ -120,11 +121,21 @@
             this._miHelpAbout.Text = "&About ";
             this._miHelpAbout.Click += new System.EventHandler(this.OnHelpAbout);
             // 
+            // _ListProducts
+            // 
+            this._listProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._listProducts.FormattingEnabled = true;
+            this._listProducts.Location = new System.Drawing.Point(0, 24);
+            this._listProducts.Name = "_ListProducts";
+            this._listProducts.Size = new System.Drawing.Size(1089, 601);
+            this._listProducts.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 625);
+            this.Controls.Add(this._listProducts);
             this.Controls.Add(this.mainMenu);
             this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
@@ -149,6 +160,7 @@
         private System.Windows.Forms.ToolStripMenuItem _miProductDelete;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _miHelpAbout;
+        private System.Windows.Forms.ListBox _listProducts;
     }
 }
 

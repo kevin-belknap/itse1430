@@ -11,6 +11,11 @@ namespace Nile {
     /// </remarks>
     public class Product {
 
+        /// <summary>
+        /// Gets or Sets the Unique Identifier
+        /// </summary>
+        public int Id { get; set; }
+
 
         //public readonly Product None = new Product();
         //public Product None = new Product();
@@ -90,7 +95,7 @@ namespace Nile {
 
         public override string ToString()
         {
-            return base.ToString();
+            //return base.ToString();
             {
                 return Name;
             }

@@ -81,7 +81,7 @@ namespace MovieLib.Windows {
             movie.Length = GetLength(_txtLength);
             movie.Owned = _chkOwned.Checked;
 
-            var error = movie.Validate(_txtLength.Text.Trim());
+            var error = movie.Validate();
 
             if (!String.IsNullOrEmpty(error))
             {
@@ -97,24 +97,41 @@ namespace MovieLib.Windows {
 
         private int GetLength(TextBox control)
         {
-            if (int.TryParse(control.Text, out int length))
-                return length;
+            //Handle empty textbox scenario
+            if (control.TextLength > 0)
+            {
+                if (int.TryParse(control.Text, out int length))
+                    return length;
+            }
+            else
+            {
+                return 0;
+            }
 
             return -1;   //indicate error
         }
-        //TODO: Error check for movie length
-        //private void OnValidatingLength( object sender, CancelEventArgs e )
-        //{
-        //    var tb = sender as TextBox;
 
-        //    if (GetLength(tb) < 0)
-        //    {
-        //        e.Cancel = true;
-        //        _errors.SetError(_txtPrice, "Value must be much bigger than just a zero");
-        //    } else
-        //    {
-        //        _errors.SetError(_txtPrice, "");
-        //    }
-        //}
+        private void OnValidatingTitle(object sender, CancelEventArgs e)
+        {
+            var tb = sender as TextBox;
+            if (String.IsNullOrEmpty(tb.Text))
+                _errors.SetError(tb, "Title is required");
+            else
+                _errors.SetError(tb, "");
+        }
+
+        private void OnValidatingLength(object sender, CancelEventArgs e)
+        {
+            var tb = sender as TextBox;
+
+            if (GetLength(tb) < 0)
+            {
+                _errors.SetError(_txtLength, "Value must be >= 0.");
+            }
+            else
+            {
+                _errors.SetError(_txtLength, "");
+            }
+        }
     }
 }

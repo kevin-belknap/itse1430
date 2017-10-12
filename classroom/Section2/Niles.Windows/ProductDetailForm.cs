@@ -98,8 +98,15 @@ namespace Nile.Windows {
 
         private decimal GetPrice(TextBox control)
         {
-            if (Decimal.TryParse(control.Text, out decimal price))
-                return price;
+            if (control.TextLength > 0)
+            {
+                if (Decimal.TryParse(control.Text, out decimal price))
+                    return price;
+            }
+            else
+            {
+                return 0;
+            }
 
             //this.DialogResult = DialogResult.Cancel;
             //TODO: Validate price
@@ -130,7 +137,7 @@ namespace Nile.Windows {
         {
             var tb = sender as TextBox;
             if (String.IsNullOrEmpty(tb.Text))
-                _errors.SetError(tb, "Name is required");
+                _errors.SetError(tb, "Name is required123");
             else
                 _errors.SetError(tb, "");
         }

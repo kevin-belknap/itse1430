@@ -39,13 +39,22 @@ namespace MovieLib {
         /// <summary>Determines if Movie is owned</summary>
         public bool Owned { get; set; }
 
-        public virtual string Validate(string LengthValue)
+        public virtual string Validate()
         {
+            string errorMessage = "";
+
             if (String.IsNullOrEmpty(Title))
-                return "Title cannot be empty";
-            
-            if (Length < 0 && LengthValue.Length != 0)
-                return "Length must be a number >= 0";
+            {
+                errorMessage = "Title cannot be empty";
+            }
+
+            if (Length < 0)
+            {
+                errorMessage =( errorMessage.Length > 0) ? errorMessage += "\nLength must be a number >= 0" : "Length must be a number >= 0";
+            }
+
+            if (errorMessage.Length > 0)
+                return errorMessage;
 
             return null;
         }

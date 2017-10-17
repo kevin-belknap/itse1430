@@ -10,22 +10,34 @@ namespace Nile {
     {
         public ProductDatabase()
         {
-            var product = new Product();
-            product.Name = "Galaxy S7";
-            product.Price = 650;
-            Add(product);
+            //Long way to initialize an object
+            //product = new Product();
+            //product.Name = "Samsung Note 7";
+            //product.Price =150;
+            //product.IsDiscontinued = true;
+            //Add(product);
 
-            product = new Product();
-            product.Name = "Samsung Note 7";
-            product.Price =150;
-            product.IsDiscontinued = true;
-            Add(product);
+            //Short way to initialize an object (object initializer)
+            //_products.Add(new Product() { Id = 1, Name = "Galaxy S7", Price = 650 });
+            //_products.Add(new Product() { Id = 2, Name = "Samsung Note 7", Price = 150, IsDiscontinued = true });
+            //_products.Add(new Product() { Id = 3, Name = "iPhoneX", Price = 900 });
 
-            product = new Product();
-            product.Name = "iPhone X";
-            product.Price =900;
-            product.IsDiscontinued = true;
-            Add(product);
+            //Collection Initializer syntax
+            //Add Call is implicit.
+            //_products = new List<Product>() {
+            //    new Product() { Id = 1, Name = "Galaxy S7", Price = 650 },
+            //    new Product() { Id = 2, Name = "Samsung Note 7", Price = 150, IsDiscontinued = true },
+            //    new Product() { Id = 3, Name = "iPhoneX", Price = 900 }
+            //};
+
+            //Collection Initializer syntax with array
+            _products.AddRange(new[] {               //You can take type out, it is implied
+                new Product() { Id = 1, Name = "Galaxy S7", Price = 650 },
+                new Product() { Id = 2, Name = "Samsung Note 7", Price = 150, IsDiscontinued = true },
+                new Product() { Id = 3, Name = "iPhoneX", Price = 900 }
+            });
+
+            _nextId = _products.Count + 1;
         }
 
         /// <summary>Adds a Product</summary>
@@ -36,8 +48,9 @@ namespace Nile {
             if (product == null)
                 return null;
 
-            product.Validate();
-
+            if (!ObjectValidator.TryValidate(product, out var errors))
+                return null;
+            
             //emulate database by storing copy
             var newProduct = CopyProduct(product);
             _products.Add(newProduct);
@@ -133,7 +146,8 @@ namespace Nile {
             if (product == null)
                 return null;
 
-            product.Validate();
+            if (!ObjectValidator.TryValidate(product, out var errors))
+                return null;
 
             //Get existing product
             var existing = FindProduct(product.Id);

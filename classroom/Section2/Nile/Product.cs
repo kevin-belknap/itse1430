@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace Nile {
     /// <remarks>
     /// This will represent a product with other stuff.
     /// </remarks>
-    public class Product {
-
+    public class Product : IValidatableObject            //This is NOT inheritance.  Interface implementation is not inheritance
+    {
         /// <summary>
         /// Gets or Sets the Unique Identifier
         /// </summary>
@@ -115,20 +116,23 @@ namespace Nile {
 
         private int[] _sizes = new int[4];
 
-        public virtual string Validate()
+        
+        public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
         {
-            //TODO: validate
+            //var errors = new List<ValidationResult>();
 
             if (String.IsNullOrEmpty(Name))
-                return "Name cannot be empty";
+                yield return new ValidationResult("Name cannot be empty.", new[] { "Name" });
 
-                //Pri9ce > 0
-                if (Price < 0)
-                    return "Price must be >= 0";
+            //Pri9ce > 0
+            if (Price < 0)
+                //errors.Add(new ValidationResult("Price must be >= 0", new[] { nameof(Price) }));
+                yield return new ValidationResult("Price must be >= 0", new[] { nameof(Price) });
 
-                return null;
-            }
-        
+            //return errors;
+        }
+    
+
 
         //property that allows anyone to get value, but i am only one that can set it.
         //you can mix accessibility.  You can have an access modifier on a get or a set.  It may be on one, but not both.

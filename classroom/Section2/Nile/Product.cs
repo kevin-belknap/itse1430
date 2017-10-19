@@ -112,8 +112,7 @@ namespace Nile {
                 return copySizes;
             }
         }
-
-
+        
         private int[] _sizes = new int[4];
 
         

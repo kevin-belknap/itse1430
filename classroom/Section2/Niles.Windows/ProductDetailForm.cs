@@ -92,7 +92,7 @@ namespace Nile.Windows {
                 Price = GetPrice(_txtPrice),
                 IsDiscontinued = _chkIsDiscontinued.Checked
             };
-
+            
 
 
             //var error = product.Validate();

@@ -150,6 +150,6 @@ namespace Nile.Windows {
         }
         
         //private Product[] _products = new Product[100];
-        private ProductDatabase _database = new ProductDatabase();
+        private IProductDatabase _database = new Nile.Stores.MemoryProductDatabase();
     }
 }

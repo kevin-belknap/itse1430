@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D6B6C805-E581-4B1D-AC2C-BE84554462CD}</ProjectGuid>
+    <ProjectGuid>{F0B4E660-D7CF-49FB-A87D-B5EFFB2CFA27}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MovieLib</RootNamespace>
-    <AssemblyName>MovieLib</AssemblyName>
+    <RootNamespace>MovieLib.Data.Memory</RootNamespace>
+    <AssemblyName>MovieLib.Data.Memory</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,13 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMovieDatabase.cs" />
-    <Compile Include="Movie.cs" />
-    <Compile Include="ObjectValidator.cs" />
+    <Compile Include="MemoryMovieDatabase.cs" />
+    <Compile Include="MovieDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Stores\" />
+    <ProjectReference Include="..\MovieLib\MovieLib.csproj">
+      <Project>{d6b6c805-e581-4b1d-ac2c-be84554462cd}</Project>
+      <Name>MovieLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

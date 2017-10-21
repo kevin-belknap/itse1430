@@ -79,33 +79,22 @@ namespace Nile.Windows {
 
         private void OnProductEdit( object sender, EventArgs e )
         {
-            //Are there any products?
-            //var index = FindFirstProduct();
-
-            //if (index < 0)
-            //{
-            //    MessageBox.Show("No products available.");
-            //        return;
-            //}
-
+           
             var product = GetSelectedProduct();
-
             if (product == null)
             {
                 MessageBox.Show("No products available.");
                 return;
-            }
+            };
 
             var child = new ProductDetailForm("Product Details");
-
             child.Product = product;
-
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //TODO: Ask about this child member
-            //save product
+            //Save product
             _database.Update(child.Product);
+            UpdateList();
         }
 
         private void OnProductDelete( object sender, EventArgs e )

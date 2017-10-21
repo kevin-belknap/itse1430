@@ -37,6 +37,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._miHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this._listMovies = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,21 +81,21 @@
             // _miMovieAdd
             // 
             this._miMovieAdd.Name = "_miMovieAdd";
-            this._miMovieAdd.Size = new System.Drawing.Size(152, 22);
+            this._miMovieAdd.Size = new System.Drawing.Size(107, 22);
             this._miMovieAdd.Text = "&Add";
             this._miMovieAdd.Click += new System.EventHandler(this.OnMovieAdd);
             // 
             // _miMovieEdit
             // 
             this._miMovieEdit.Name = "_miMovieEdit";
-            this._miMovieEdit.Size = new System.Drawing.Size(152, 22);
+            this._miMovieEdit.Size = new System.Drawing.Size(107, 22);
             this._miMovieEdit.Text = "&Edit";
             this._miMovieEdit.Click += new System.EventHandler(this.OnMovieEdit);
             // 
             // _miMovieDelete
             // 
             this._miMovieDelete.Name = "_miMovieDelete";
-            this._miMovieDelete.Size = new System.Drawing.Size(152, 22);
+            this._miMovieDelete.Size = new System.Drawing.Size(107, 22);
             this._miMovieDelete.Text = "&Delete";
             this._miMovieDelete.Click += new System.EventHandler(this.OnMovieDelete);
             // 
@@ -109,7 +110,7 @@
             // _miHelpAbout
             // 
             this._miHelpAbout.Name = "_miHelpAbout";
-            this._miHelpAbout.Size = new System.Drawing.Size(152, 22);
+            this._miHelpAbout.Size = new System.Drawing.Size(107, 22);
             this._miHelpAbout.Text = "About";
             this._miHelpAbout.Click += new System.EventHandler(this.OnHelpAbout);
             // 
@@ -118,11 +119,21 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // _listMovies
+            // 
+            this._listMovies.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._listMovies.FormattingEnabled = true;
+            this._listMovies.Location = new System.Drawing.Point(0, 24);
+            this._listMovies.Name = "_listMovies";
+            this._listMovies.Size = new System.Drawing.Size(684, 407);
+            this._listMovies.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 431);
+            this.Controls.Add(this._listMovies);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(700, 400);
@@ -147,6 +158,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem _miHelpAbout;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ListBox _listMovies;
     }
 }
 

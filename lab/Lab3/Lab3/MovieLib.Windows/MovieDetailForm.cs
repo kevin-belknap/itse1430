@@ -73,26 +73,27 @@ namespace MovieLib.Windows {
             if (!ValidateChildren())
             {
                 return;
-            }
+            };
 
-            var movie = new Movie();
-            movie.Title = _txtTitle.Text;
-            movie.Description = _txtDescription.Text;
-            movie.Length = GetLength(_txtLength);
-            movie.Owned = _chkOwned.Checked;
+            //Object initializer syntax
+            var movie = new Movie() {
+                Id = Movie?.Id ?? 0,
+                Title = _txtTitle.Text,
+                Description = _txtDescription.Text,
+                Length = GetLength(_txtLength),
+                Owned = _chkOwned.Checked,
+            };
 
-            var error = movie.Validate();
-
-            if (!String.IsNullOrEmpty(error))
+            if (!ObjectValidator.TryValidate(movie, out var errors))
             {
-                ShowError(error, "Validation Error");
+                //Show the error
+                ShowError("Not valid", "Validation Error");
                 return;
-            }
+            };
 
             Movie = movie;
             this.DialogResult = DialogResult.OK;
             Close();
-
         }
 
         private int GetLength(TextBox control)

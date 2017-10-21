@@ -4,6 +4,7 @@
  */
 
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,12 @@ namespace MovieLib {
     /// <remarks>
     /// This will represent a Movie
     /// </remarks>
-    public class Movie {
+    public class Movie : IValidatableObject {
+
+        /// <summary>
+        /// Gets or Sets the Unique Identifier
+        /// </summary>
+        public int Id { get; set; }
 
         /// <summary>Gets or Sets the Title</summary>
         /// <value>Never returns null</value>
@@ -39,32 +45,26 @@ namespace MovieLib {
         /// <summary>Determines if Movie is owned</summary>
         public bool Owned { get; set; }
 
-        public virtual string Validate()
+        public override string ToString()
         {
-            string errorMessage = "";
-
-            if (String.IsNullOrEmpty(Title))
-            {
-                errorMessage = "Title cannot be empty";
-            }
-
-            if (Length < 0)
-            {
-                errorMessage =( errorMessage.Length > 0) ? errorMessage += "\nLength must be a number >= 0" : "Length must be a number >= 0";
-            }
-
-            if (errorMessage.Length > 0)
-                return errorMessage;
-
-            return null;
+            return Title;
         }
 
+        /// <summary>Validates the object.</summary>
+        /// <returns>The error message or null.</returns>      
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            //Title cannot be empty
+            if (String.IsNullOrEmpty(Title))
+                yield return new ValidationResult("Title cannot be empty.", new[] { nameof(Title) });
+            
+            //Length >= 0
+            if (Length < 0)
+                yield return new ValidationResult("Length must be >= 0.", new[] { nameof(Length) });
+        }
+        
         //Backing Fields
         private string _title;
         private string _description;
     }
-
-    
-    
- 
 }

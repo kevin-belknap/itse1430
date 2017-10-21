@@ -79,7 +79,7 @@ namespace Nile.Stores {
 
             var product = GetCore(id);
             if (product.Id == id)
-                return RemoveCore(id);
+                RemoveCore(id);
         }
 
         /// <summary>Removes the product</summary>

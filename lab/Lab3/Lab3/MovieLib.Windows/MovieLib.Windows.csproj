@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -97,6 +98,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MovieLib.Data.Memory\MovieLib.Data.Memory.csproj">
+      <Project>{f0b4e660-d7cf-49fb-a87d-b5effb2cfa27}</Project>
+      <Name>MovieLib.Data.Memory</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MovieLib\MovieLib.csproj">
       <Project>{d6b6c805-e581-4b1d-ac2c-be84554462cd}</Project>
       <Name>MovieLib</Name>

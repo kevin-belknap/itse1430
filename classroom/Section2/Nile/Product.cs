@@ -67,9 +67,7 @@ namespace Nile {
         /// <summary>Determines if discontinued.</summary>
         /// <value></value>
         public bool IsDiscontinued { get; set; }
-
-        public const decimal DiscontinuedDiscountRate = 0.10M;
-
+        
         //functions are a way to have access to all fields without having to expose those fields to the calling agent
         /// <summary>Gets the discounted price, if applicable</summary>
         /// <returns>The price.</returns>
@@ -82,19 +80,7 @@ namespace Nile {
 
         //}
 
-        //change above method into a property.  This is called a calculated property.
-        public decimal DiscountedProperty
-        {
-            get {
-                // if (IsDiscontinued)
-                if (this.IsDiscontinued)
-                    return Price * DiscontinuedDiscountRate;
-
-                return Price;
-            }
-        }
-
-        public override string ToString()
+       public override string ToString()
         {
             //return base.ToString();
             {
@@ -103,17 +89,17 @@ namespace Nile {
         }
 
         //size of the product
-        public int[] Sizes
-        {
-            get {
-                var copySizes = new int[_sizes.Length];
-                Array.Copy(_sizes, copySizes, _sizes.Length);
+        //public int[] Sizes
+        //{
+        //    get {
+        //        var copySizes = new int[_sizes.Length];
+        //        Array.Copy(_sizes, copySizes, _sizes.Length);
 
-                return copySizes;
-            }
-        }
+        //        return copySizes;
+        //    }
+        //}
         
-        private int[] _sizes = new int[4];
+        //private int[] _sizes = new int[4];
 
         
         public IEnumerable<ValidationResult> Validate( ValidationContext validationContext )
@@ -152,6 +138,6 @@ namespace Nile {
 
         //readonly applied to a field effectively makes this a CONST... with differences.  Readonly means the value is fixed the moment the instance of the class is created.  
         //it is not restricted to value types
-        private readonly double _someValueICannotChange = 10;
+        //private readonly double _someValueICannotChange = 10;
     }
 }

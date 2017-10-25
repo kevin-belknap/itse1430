@@ -33,10 +33,11 @@ namespace Nile.Stores {
             //_products.AddRange(new[] {               //You can take type out, it is implied
                 AddCore(new Product() { Id = 1, Name = "Galaxy S7", Price = 650 });
                 AddCore(new Product() { Id = 2, Name = "Samsung Note 7", Price = 150, IsDiscontinued = true });
-                AddCore(new Product() { Id = 3, Name = "iPhoneX", Price = 900 });
+            AddCore(new Product() { Id = 3, Name = "iPhoneX", Price = 900 });
+            AddCore(new Product() { Id = 4, Name = "Windows", Price = 1200 });
             //});
 
-           // _nextId = _products.Count + 1;
+            // _nextId = _products.Count + 1;
         }
 
 

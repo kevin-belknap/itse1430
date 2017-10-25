@@ -87,6 +87,8 @@ namespace Nile.Stores {
         protected override Product UpdateCore( Product existing, Product product )
         {
             //Replace
+            //10.25.2017
+            existing = FindProduct(product.Id);
             _products.Remove(existing);
 
             //emulate database by storing copy
@@ -117,6 +119,7 @@ namespace Nile.Stores {
             var newProduct = new Product();
             newProduct.Id = product.Id;
             newProduct.Name = product.Name;
+            newProduct.Description = product.Description;
             newProduct.Price = product.Price;
             newProduct.IsDiscontinued = product.IsDiscontinued;
 

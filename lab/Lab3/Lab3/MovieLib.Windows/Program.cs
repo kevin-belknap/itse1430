@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* ITSE1430
+ * Kevin Belknap
+ * October 27, 2017
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

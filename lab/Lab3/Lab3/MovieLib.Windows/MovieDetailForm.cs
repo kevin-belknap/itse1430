@@ -1,6 +1,6 @@
 ﻿/* ITSE1430
  * Kevin Belknap
- * October 7, 2017
+ * October 27, 2017
  */
 
 using System;
@@ -19,17 +19,7 @@ namespace MovieLib.Windows {
         {
             InitializeComponent();
         }
-
-        public MovieDetailForm(string title) : this()    //constructor chaining
-        {
-            Text = title;
-        }
-
-        public MovieDetailForm(string title, Movie movie) : this(title)  //constructor chaining.  calls the constructor that takes title as the parameter, which then calls the base constructor of the class.
-        {
-            Movie = movie;
-        }
-
+        
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -74,8 +64,7 @@ namespace MovieLib.Windows {
             {
                 return;
             };
-
-            //Object initializer syntax
+            
             var movie = new Movie() {
                 Id = Movie?.Id ?? 0,
                 Title = _txtTitle.Text,
@@ -86,7 +75,6 @@ namespace MovieLib.Windows {
 
             if (!ObjectValidator.TryValidate(movie, out var errors))
             {
-                //Show the error
                 ShowError("Not valid", "Validation Error");
                 return;
             };
@@ -109,7 +97,7 @@ namespace MovieLib.Windows {
                 return 0;
             }
 
-            return -1;   //indicate error
+            return -1;   //indicates error
         }
 
         private void OnValidatingTitle(object sender, CancelEventArgs e)

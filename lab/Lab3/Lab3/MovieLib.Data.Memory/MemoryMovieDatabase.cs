@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* ITSE1430
+ * Kevin Belknap
+ * October 27, 2017
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -56,18 +61,17 @@ namespace MovieLib.Data.Memory {
         /// <returns>The updated movie.</returns>
         protected override Movie UpdateCore(Movie existing, Movie movie)
         {
-            var itemToRemove = _movies.Single(r => r.Title == existing.Title);
-            _movies.Remove(itemToRemove);
-            
-            //Replace 
-            //_movies.Remove(existing);
+            existing = FindMovie(movie.Id);
+            _movies.Remove(existing);
 
             var newMovie = CopyMovie(movie);
             _movies.Add(newMovie);
 
             return CopyMovie(newMovie);
         }
-
+        /// <summary>
+        /// Copies a Movie</summary>
+        /// <param name="movie"></param>
         private Movie CopyMovie(Movie movie)
         {
             if (movie == null)
@@ -83,7 +87,10 @@ namespace MovieLib.Data.Memory {
             return newMovie;
         }
 
-        //Find a movie by ID
+        /// <summary>
+        /// Find Movie By Id</summary>
+        /// <param name="id"></param>
+        /// <returns>Returns a Movie if found</returns>
         private Movie FindMovie(int id)
         {
             foreach (var movie in _movies)

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* ITSE1430
+ * Kevin Belknap
+ * October 27, 2017
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -48,7 +53,6 @@ namespace MovieLib.Data.Memory {
         /// <param name="id">The movie to remove.</param>
         public void Remove(int id)
         {
-            //TODO: Validate
             if (id <= 0)
                 return;
 
@@ -60,7 +64,6 @@ namespace MovieLib.Data.Memory {
         /// <returns>The updated movie.</returns>
         public Movie Update(Movie movie)
         {
-            //TODO: Validate
             if (movie == null)
                 return null;
 

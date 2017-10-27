@@ -1,4 +1,9 @@
-﻿using System.Collections.Generic;
+﻿/* ITSE1430
+ * Kevin Belknap
+ * October 27, 2017
+ */
+
+using System.Collections.Generic;
 
 namespace MovieLib {
     /// <summary>Provides a database of <see cref="Movie"/> items.</summary>

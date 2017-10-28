@@ -55,7 +55,7 @@ namespace MovieLib.Windows {
             
             if (DuplicateTitleCheck(child.Movie.Title) == "duplicate")
             {
-                MessageBox.Show("A movie with this title already exists.");
+                MessageBox.Show("A movie with this title already exists.", "Invalid Operation");
                 return;
             }
 
@@ -85,7 +85,11 @@ namespace MovieLib.Windows {
 
             if (movie == null)
             {
-                MessageBox.Show("No movies selected or available.");
+                if (_database.GetAll().Count() == 0)
+                    MessageBox.Show("No movies available.", "Invalid Selection");
+                else
+                    MessageBox.Show("No movie selected.", "Invalid Selection");
+
                 return;
             }
             else
@@ -109,7 +113,7 @@ namespace MovieLib.Windows {
             {
                 if (DuplicateTitleCheck(child.Movie.Title) == "duplicate")
                 {
-                    MessageBox.Show("A movie with this title already exists.");
+                    MessageBox.Show("A movie with this title already exists.", "Invalid Operation");
                     return;
                 }
             }

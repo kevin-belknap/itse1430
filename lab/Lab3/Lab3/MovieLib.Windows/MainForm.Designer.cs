@@ -27,6 +27,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this._miFileExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,21 +90,20 @@
             // _miMovieAdd
             // 
             this._miMovieAdd.Name = "_miMovieAdd";
-            this._miMovieAdd.Size = new System.Drawing.Size(152, 22);
+            this._miMovieAdd.Size = new System.Drawing.Size(131, 22);
             this._miMovieAdd.Text = "&Add";
             this._miMovieAdd.Click += new System.EventHandler(this.OnMovieAdd);
             // 
             // _miMovieEdit
             // 
             this._miMovieEdit.Name = "_miMovieEdit";
-            this._miMovieEdit.Size = new System.Drawing.Size(152, 22);
+            this._miMovieEdit.Size = new System.Drawing.Size(131, 22);
             this._miMovieEdit.Text = "&Edit";
             this._miMovieEdit.Click += new System.EventHandler(this.OnMovieEdit);
             // 
             // _miMovieDelete
             // 
             this._miMovieDelete.Name = "_miMovieDelete";
-            this._miMovieDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this._miMovieDelete.Size = new System.Drawing.Size(152, 22);
             this._miMovieDelete.Text = "&Delete";
             this._miMovieDelete.Click += new System.EventHandler(this.OnMovieDelete);
@@ -132,6 +132,9 @@
             // 
             this._gridMovies.AllowUserToAddRows = false;
             this._gridMovies.AllowUserToDeleteRows = false;
+            this._gridMovies.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this._gridMovies.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this._gridMovies.AutoGenerateColumns = false;
             this._gridMovies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this._gridMovies.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -150,13 +153,15 @@
             this._gridMovies.Size = new System.Drawing.Size(684, 407);
             this._gridMovies.TabIndex = 2;
             this._gridMovies.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OnEditRow);
+            this._gridMovies.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownGrid);
             // 
             // Title
             // 
             this.Title.DataPropertyName = "Title";
             this.Title.FillWeight = 200F;
+            this.Title.Frozen = true;
             this.Title.HeaderText = "Title";
-            this.Title.MinimumWidth = 200;
+            this.Title.MinimumWidth = 100;
             this.Title.Name = "Title";
             this.Title.ReadOnly = true;
             this.Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -166,9 +171,9 @@
             // 
             this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Description.DataPropertyName = "Description";
-            this.Description.FillWeight = 300F;
+            this.Description.FillWeight = 200F;
             this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 200;
+            this.Description.MinimumWidth = 100;
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
             this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -177,6 +182,7 @@
             // 
             this.Length.DataPropertyName = "Length";
             this.Length.HeaderText = "Length";
+            this.Length.MinimumWidth = 50;
             this.Length.Name = "Length";
             this.Length.ReadOnly = true;
             this.Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -184,7 +190,7 @@
             // Owned
             // 
             this.Owned.DataPropertyName = "Owned";
-            this.Owned.HeaderText = "Owned";
+            this.Owned.HeaderText = "Is Owned?";
             this.Owned.Name = "Owned";
             this.Owned.ReadOnly = true;
             this.Owned.Resizable = System.Windows.Forms.DataGridViewTriState.False;

@@ -152,27 +152,32 @@ namespace MovieLib.Windows {
 
         private void OnEditRow(object sender, DataGridViewCellEventArgs e)
         {
-            var grid = sender as DataGridView;
-
             //handle header cell being clicked
             if (e.RowIndex < 0)
                 return;
 
-            var row = grid.Rows[e.RowIndex];
-            var item = row.DataBoundItem as Movie;
+            var movie = GetSelectedMovie();
             
-            if (item != null)
-                EditMovie(item.Title, item);
+            if (movie != null)
+                EditMovie(movie.Title, movie);
         }
 
         private void OnKeyDownGrid(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Delete)
+            if (e.KeyCode != Keys.Delete && e.KeyCode != Keys.Enter)
                 return;
-
+            
             var movie = GetSelectedMovie();
+
             if (movie != null)
-                DeleteMovie(movie);
+            {
+                if (e.KeyCode == Keys.Enter)
+                    EditMovie(movie.Title, movie);
+                else
+                    DeleteMovie(movie);
+            }
+
+            return;
         }
 
         private IMovieDatabase _database = new MemoryMovieDatabase();

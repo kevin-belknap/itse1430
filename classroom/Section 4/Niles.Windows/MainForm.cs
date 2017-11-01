@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Windows.Forms;
+using Nile.Stores;
 
 namespace Nile.Windows {
     public partial class MainForm : Form {
@@ -18,7 +19,7 @@ namespace Nile.Windows {
             base.OnLoad(e);
 
             _database = new Nile.Stores.FileProductDatabase("products.csv");
-            Nile.Stores.ProductDatabaseExtensions.WithSeedData(_database);
+            ProductDatabaseExtensions.WithSeedData(_database);
 
             _gridProducts.AutoGenerateColumns = false;
 

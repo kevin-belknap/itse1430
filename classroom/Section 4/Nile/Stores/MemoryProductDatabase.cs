@@ -23,8 +23,8 @@ namespace Nile.Stores {
             }
 
             //temporary crash
-            if (_nextId % 2 == 0)
-                throw new InvalidOperationException("Id invalid");
+            //if (_nextId % 2 == 0)
+                //throw new InvalidOperationException("Id invalid");
             //
 
             return CopyProduct(newProduct);

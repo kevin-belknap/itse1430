@@ -45,7 +45,7 @@
     <Compile Include="ObjectValidator.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Stores\FileProductDatabase.cs" />
-    <Compile Include="Stores\ProductDatabase.cs" />
+    <Compile Include="ProductDatabase.cs" />
     <Compile Include="Stores\SeededMemoryProductDatabase.cs" />
     <Compile Include="Stores\MemoryProductDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

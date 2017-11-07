@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Nile.Stores {
     /// <summary>Base class for product database</summary>
@@ -45,27 +46,13 @@ namespace Nile.Stores {
         /// <returns>The products.</returns>
         protected override IEnumerable<Product> GetAllCore()
         {
-            foreach (var product in _products)
-                yield return CopyProduct(product);
-            
-            //how many products?
-            //var count = 0;
+            return from item in _products
+                        select CopyProduct(item);
+
             //foreach (var product in _products)
-            //{
-            //    if (product != null)
-            //        ++count;
-            //}
+            //    yield return CopyProduct(product);
 
-            //var items = new Product[count];
-            //var index = 0;
 
-            //foreach(var product in _products)
-            //{
-            //    if (product != null)
-            //        items[index++] = CopyProduct(product);
-            //}
-
-            //return items;
         }
 
         /// <summary>Removes the product</summary>
@@ -107,13 +94,24 @@ namespace Nile.Stores {
 
         private Product FindProduct ( int id )
         {
-            foreach (var product in _products)
-            {
-                if (product.Id == id)
-                    return product;
-            }
+            //LINQ Syntax
+            return (from product in _products
+                   where product.Id == id
+                   select product).FirstOrDefault();
 
-            return null;
+            //lambda expression
+            return _products.Where( p => p.Id == id )
+                            .Select(p => p )
+                            .FirstOrDefault();
+
+
+            //foreach (var product in _products)
+            //{
+            //    if (product.Id == id)
+            //        return product;
+            //}
+
+            //return null;
         }
 
         

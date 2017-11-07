@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nile.Stores {
+namespace Nile {
     /// <summary>Base class for product database</summary>
     public abstract class ProductDatabase : IProductDatabase
     { 

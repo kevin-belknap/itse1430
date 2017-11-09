@@ -35,10 +35,13 @@ namespace Nile {
             //get must ALWAYS have a return statement.  It must return the exact type of the property.
             //equivelant method would look like --> string get_Name()
             //the gets and the sets make this a property.  So the user sees it as a field.  But the compiler takes a field call and runs the gettr or setter method.
-            get {
+            //get {
                 //use null conditional to ensure users never get a null value for the name variable
-                return _name ?? "";
-            }
+                //return _name ?? "";
+
+                //using lambda
+                get => Name ?? "";
+            //}
 
             //equivelant method
             //void set_Name (string value)
@@ -57,6 +60,14 @@ namespace Nile {
             get { return _description ?? ""; }
             set { _description = value?.Trim(); }
         }
+
+        //public decimal CalculatedProperty
+        //{
+        //    get => 0M;
+        //}
+
+        //calculated property using lambda
+        public decimal CalculatedProperty => 0M;
 
         /// <summary>
         /// Gets or sets the price

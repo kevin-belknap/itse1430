@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
 using System.Linq;
 using System.Windows.Forms;
 using Nile.Stores;
@@ -20,11 +21,13 @@ namespace Nile.Windows {
 
             _miFileExit.Click += ( o, ea ) => Close();
 
-            _database = new Nile.Stores.FileProductDatabase("products.csv");
-            //ProductDatabaseExtensions.WithSeedData(_database);
-            _database.WithSeedData();
-            
+            var connString = ConfigurationManager.ConnectionStrings["ProductDatabase"].ConnectionString;
 
+            _database = new Nile.Stores.Sql.SqlProductDatabase(connString);
+
+            //ProductDatabaseExtensions.WithSeedData(_database);
+            //_database.WithSeedData();
+            
             _gridProducts.AutoGenerateColumns = false;
 
             UpdateList();

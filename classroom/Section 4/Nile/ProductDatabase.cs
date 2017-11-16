@@ -92,8 +92,8 @@ namespace Nile {
             if (id <= 0)
                 throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
 
-            var product = GetCore(id);
-            if (product.Id == id)
+            //var product = GetCore(id);
+            //if (product.Id == id)
                 RemoveCore(id);
         }
 

@@ -26,7 +26,6 @@ namespace MovieLib.Windows {
             var connString = ConfigurationManager.ConnectionStrings["MovieDatabase"].ConnectionString;
             _database = new MovieLib.Data.Sql.SqlMovieDatabase(connString);
             
-
             _gridMovies.AutoGenerateColumns = false;
 
             UpdateList();
@@ -68,6 +67,7 @@ namespace MovieLib.Windows {
             if (DuplicateTitleCheck(child.Movie.Title) == "duplicate")
             {
                 MessageBox.Show("A movie with this title already exists.", "Invalid Operation");
+                OnMovieAdd(sender, e);
                 return;
             }
 
@@ -138,6 +138,8 @@ namespace MovieLib.Windows {
                 if (DuplicateTitleCheck(child.Movie.Title) == "duplicate")
                 {
                     MessageBox.Show("A movie with this title already exists.", "Invalid Operation");
+                   
+                    EditMovie(startingTitle, movie);
                     return;
                 }
             }

@@ -28,7 +28,6 @@ namespace MovieLib {
             }
             catch (Exception e)
             {
-                //Throw different exception
                 throw new Exception("Add failed", e);
 
                 //Re-throw
@@ -93,7 +92,7 @@ namespace MovieLib {
 
         /// <summary>Adds a movie.</summary>
         /// <param name="movie">The movie to add.</param>
-        /// <returns>The added product.</returns>
+        /// <returns>The added movie.</returns>
         protected abstract Movie AddCore(Movie movie);/// 
 
         /// <summary>Get a movie given its ID.</summary>
@@ -114,7 +113,6 @@ namespace MovieLib {
         /// <param name="newItem">The movie to update.</param>
         /// <returns>The updated movie.</returns>
         protected abstract Movie UpdateCore(Movie existing, Movie newItem);
-
         
         #endregion
     }

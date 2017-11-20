@@ -9,7 +9,6 @@ using System.Linq;
 using System.Windows.Forms;
 using MovieLib.Data.Sql;
 using System.Configuration;
-
 using System.ComponentModel.DataAnnotations;
 
 namespace MovieLib.Windows {
@@ -49,7 +48,6 @@ namespace MovieLib.Windows {
                 DisplayError(e, "Refresh Failed");
                 _bsMovies.DataSource = null;
             }
-            
         }
 
         private void OnFileExit(object sender, EventArgs e)
@@ -232,6 +230,5 @@ namespace MovieLib.Windows {
         }
 
         private IMovieDatabase _database;
-
     }
 }

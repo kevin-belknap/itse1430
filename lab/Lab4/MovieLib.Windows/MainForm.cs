@@ -88,16 +88,15 @@ namespace MovieLib.Windows {
             UpdateList();
         }
         
-        public string DuplicateTitleCheck(string title)
+        private string DuplicateTitleCheck(string title)
         {
-            foreach (var movie in _database.GetAll())
-            {
-                if (title == movie.ToString())
-                {
-                    return "duplicate";
-                }
-            }
+            var existingMovie =  (from movies in _database.GetAll()
+                    where movies.Title.ToUpper() == title.ToUpper()
+                    select movies).FirstOrDefault();
 
+            if (existingMovie != null)
+                return "duplicate";
+            
             return "";
         }
 
@@ -133,7 +132,7 @@ namespace MovieLib.Windows {
             if (child.ShowDialog(this) != DialogResult.OK)
                 return;
             
-            if (child.Movie.Title != startingTitle)
+            if (child.Movie.Title.Trim().ToUpper() != startingTitle.Trim().ToUpper())
             {
                 if (DuplicateTitleCheck(child.Movie.Title) == "duplicate")
                 {

@@ -16,7 +16,6 @@ namespace MovieLib {
         /// <exception cref="ValidationException"><paramref name="movie"/> is invalid.</exception>
         public Movie Add(Movie movie)
         {
-            //TODO: Validate
             if (movie == null)
                 throw new ArgumentNullException(nameof(movie), "Movie was null");
 
@@ -40,7 +39,6 @@ namespace MovieLib {
         /// /// <exception cref="ArgumentOutOfRangeException"><paramref name="id"/> must be greater than or equal to 0.</exception> 
         public Movie Get(int id)
         {
-            //TODO: Validate
             if (id <= 0)
                 throw new ArgumentOutOfRangeException(nameof(id), "Id must be > 0.");
 

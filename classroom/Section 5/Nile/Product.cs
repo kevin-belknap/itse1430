@@ -67,6 +67,7 @@ namespace Nile {
         //}
 
         //calculated property using lambda
+        [Obsolete("Deprecated in v1. Use something else")]
         public decimal CalculatedProperty => 0M;
 
         /// <summary>

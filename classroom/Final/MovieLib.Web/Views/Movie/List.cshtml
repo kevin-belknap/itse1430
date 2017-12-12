@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MovieLib.Web.Models.MovieViewModel>
+
+@{
+    ViewBag.Title = "Movies";
+}
+
+<h2>Movies</h2>
+
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsOwned)
+        </th>
+		<th>
+			@Html.DisplayNameFor(model => model.Rating)
+		</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Length)
+        </th>
+		<th>
+			@Html.DisplayNameFor(model => model.ReleaseYear)
+		</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOwned)
+        </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Rating)
+		</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Length)
+        </td>
+		<td>
+			@Html.DisplayFor(modelItem => item.ReleaseYear)
+		</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

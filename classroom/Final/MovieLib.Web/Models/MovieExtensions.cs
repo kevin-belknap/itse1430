@@ -1,6 +1,7 @@
 ﻿/*
  * ITSE 1430
- * Sample implementation
+ * Kevin Belknap
+ * 12/14/2017
  */
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,9 @@ namespace MovieLib.Web.Models
             {
                 Id = source.Id,
                 Title = source.Title,
-
+                //Kevin Belknap
+                //CR1 - (Bug) Movie rating is not being persisted
+                Rating = source.Rating,
                 Description = source.Description,
                 Length = source.Length,
                 IsOwned = source.IsOwned,
@@ -47,7 +50,9 @@ namespace MovieLib.Web.Models
             {
                 Id = source.Id,
                 Title = source.Title,
-
+                //Kevin Belknap
+                //CR1 - (Bug) Movie rating is not being persisted
+                Rating = source.Rating,
                 Description = source.Description,
                 Length = source.Length,
                 IsOwned = source.IsOwned,

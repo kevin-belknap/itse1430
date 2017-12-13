@@ -1,6 +1,7 @@
 ﻿/*
  * ITSE 1430
- * Sample implementation
+ * Kevin Belknap
+ * 12/14/2017
  */
 using System;
 using System.Collections.Generic;
@@ -99,6 +100,9 @@ namespace MovieLib.Web.Controllers
         public ActionResult List()
         {
             var movies = from m in _database.GetAll()
+                         //Kevin Belknap
+                         //CR5 – (Feature) Movies should be sorted when displayed
+                         orderby m.Title
                          select m;
             
             return View(movies.ToViewModel());

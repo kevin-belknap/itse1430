@@ -1,6 +1,7 @@
 ﻿/*
  * ITSE 1430
- * Sample implementation
+ * Kevin Belknap
+ * 12/14/2017
  */
 using System;
 using System.Collections.Generic;

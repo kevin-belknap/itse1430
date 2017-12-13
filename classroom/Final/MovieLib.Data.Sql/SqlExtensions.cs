@@ -1,5 +1,7 @@
 ﻿/*
- * ITSE1430
+ * ITSE 1430
+ * Kevin Belknap
+ * 12/14/2017
  */
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,7 @@
 ﻿/*
  * ITSE 1430
+ * Kevin Belknap
+ * 12/14/2017
  */
 using System;
 using System.Collections.Generic;
@@ -46,7 +48,7 @@ namespace MovieLib.Data
 
         /// <summary>Gets all the movies.</summary>
         /// <returns>The list of movies.</returns>
-        public IEnumerable<Movie> Getall ()
+        public IEnumerable<Movie> GetAll ()
         {
             return GetAllCore();
         }
@@ -64,7 +66,9 @@ namespace MovieLib.Data
                 throw new ArgumentOutOfRangeException(nameof(id), "ID must be > 0.");
 
             var existing = GetCore(id);
-            if (existing != null)
+            //Kevin Belknap
+            //CR3 - (Bug) Removing a movie fails
+            if (existing == null)
                 return false;
 
             RemoveCore(id);
